@@ -5,8 +5,10 @@ import { AuthContext } from '../../contexts/AuthProvider';
 import loginImg from '../../assets/Mobile login.gif'
 import { FaGoogle } from "react-icons/fa";
 import { GoogleAuthProvider } from 'firebase/auth';
+import useTitle from '../../hooks/useTitle';
 
 const Login = () => {
+    useTitle('Login')
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const { signIn,googleSingIn } = useContext(AuthContext);
     const [loginError, setLoginError] = useState('')

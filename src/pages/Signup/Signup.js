@@ -6,8 +6,10 @@ import { AuthContext } from '../../contexts/AuthProvider';
 import signImg from '../../assets/Signup.gif'
 import { toast } from 'react-toastify';
 import { GoogleAuthProvider } from 'firebase/auth';
+import useTitle from '../../hooks/useTitle';
 
 const Signup = () => {
+    useTitle('SignUp')
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { createUser, updateUser,googleSingIn } = useContext(AuthContext);
     const [signUpError, setSignUpError] = useState('');

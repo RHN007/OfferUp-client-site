@@ -5,12 +5,32 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 import signImg from '../../assets/SignUpGif.gif'
 import { toast } from 'react-toastify';
+import { GoogleAuthProvider } from 'firebase/auth';
 
 const Signup = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const { createUser, updateUser } = useContext(AuthContext);
+    const { createUser, updateUser,googleSingIn } = useContext(AuthContext);
     const [signUpError, setSignUpError] = useState('');
 
+
+    const handleGoogleSingIn= () => {
+        googleSingIn()
+        .then(result => {
+            const credential = GoogleAuthProvider.credentialFromResult(result)
+            const token = credential.accessToken; 
+            const user = result.user
+            console.log(user)
+        })
+        .catch(error => {
+            console.log(error)
+            setSignUpError(error.message)
+            })
+    }
+
+
+
+    
+    
     const handleSignUp = (data) => {
         console.log(data)
         setSignUpError('')
@@ -67,13 +87,13 @@ const Signup = () => {
                                     })} className="input input-bordered w-full max-w-xs" />
                                     {errors.password && <p className='text-red-500'>{errors.password.message}</p>}
                                 </div>
-                                    <input className='btn btn-accent w-full mt-4' value="Sign Up" type="submit" />
+                                    <input className='btn btn-primary w-full mt-4' value="Sign Up" type="submit" />
                                     {signUpError && <p className='text-red-600'>{signUpError}</p>}
                                
                             </form>
                             <p>Already have an account <Link className='text-secondary' to="/login">Please Login</Link></p>
                             <div className="divider">OR</div>
-                            <button className='btn btn-outline  btn-primary  w-full'><FaGoogle className='mr-2 font-bold text-2xl '></FaGoogle>Google Sign Up</button>
+                            <button onClick={handleGoogleSingIn} className='btn btn-outline  btn-primary  w-full'><FaGoogle className='mr-2 font-bold text-2xl '></FaGoogle>Google Sign Up</button>
                         </div>
                     </div>
                 </div>

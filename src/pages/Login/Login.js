@@ -4,10 +4,11 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 import loginImg from '../../assets/LoginGif.gif'
 import { FaGoogle } from "react-icons/fa";
+import { GoogleAuthProvider } from 'firebase/auth';
 
 const Login = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const { signIn } = useContext(AuthContext);
+    const { signIn,googleSingIn } = useContext(AuthContext);
     const [loginError, setLoginError] = useState('')
     const [loginUserEmail, setLoginUserEmail] = useState('');
     const location = useLocation()
@@ -27,6 +28,23 @@ const Login = () => {
             setLoginError(err.message)
         })
     }
+
+    const handleGoogleSingIn= () => {
+        googleSingIn()
+        .then(result => {
+            // const user = result.user
+            const credential = GoogleAuthProvider.credentialFromResult(result)
+            const token = credential.accessToken; 
+            const user = result.user
+            console.log(user)
+        })
+        .catch(error => {
+            console.log(error)
+            setLoginError(error.message)
+            })
+    }
+
+
 
 
     return (
@@ -57,14 +75,14 @@ const Login = () => {
                                     <label className="label"> <span className="label-text">Forget Password?</span></label>
                                     {errors.password && <p className='text-red-600'>{errors.password?.message}</p>}
                                 </div>
-                                <input className='btn btn-accent w-full' value="Login" type="submit" />
+                                <input className='btn btn-primary w-full' value="Login" type="submit" />
                                 <div>
                                     {loginError && <p className='text-red-600'>{loginError}</p>}
                                 </div>
                             </form>
                             <p>New to OfferUp <Link className='text-secondary' to="/signup">Create a New Account</Link></p>
                             <div className="divider">OR</div>
-                            <button className='btn btn-outline  btn-primary  w-full'><FaGoogle className='mr-2 font-bold text-2xl '></FaGoogle>Google login</button>
+                            <button onClick={handleGoogleSingIn} className='btn btn-outline  btn-primary  w-full'><FaGoogle className='mr-2 font-bold text-2xl '></FaGoogle>Google login</button>
                         </div>
                     </div>
                 </div>

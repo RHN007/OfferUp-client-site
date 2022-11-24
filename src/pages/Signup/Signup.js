@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
-import signImg from '../../assets/SignUpGif.gif'
+import signImg from '../../assets/Signup.gif'
 import { toast } from 'react-toastify';
 import { GoogleAuthProvider } from 'firebase/auth';
 

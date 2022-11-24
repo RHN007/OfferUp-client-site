@@ -3,6 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
 import logo from '../../../assets/OfferUp-Logo-1.png'
 
+
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
 
@@ -25,7 +26,7 @@ const Navbar = () => {
     </React.Fragment>
 
     return (
-        <div className="navbar bg-primary rounded-xl flex justify-between text-accent  uppercase font-bold">
+        <div className="navbar rounded bg-primary  flex justify-between text-accent  uppercase font-bold">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">

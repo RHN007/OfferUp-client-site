@@ -1,9 +1,11 @@
 import React from 'react';
 import logo from '../../../assets/offer up.png'
+import logo2 from '../../../assets/OfferUp-Logo-1.png'
+
 
 const Footer = () => {
     return (
-        <div className="px-4 mt-5 pt-8 rounded-2xl mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-2xl bg-primary md:px-24 lg:px-8 ">
+        <div className="px-4 mt-5 pt-8 rounded mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-2xl bg-primary md:px-24 lg:px-8 ">
             <div className="grid gap-10 row-gap-6 mb-8 sm:grid-cols-2 lg:grid-cols-4">
                 <div className="sm:col-span-2">
                     <a
@@ -12,17 +14,18 @@ const Footer = () => {
                         title="Company"
                         className="inline-flex items-center"
                     >
-                       <img src={logo} width={38} alt="" />
-                        <span className="ml-2 text-xl font-bold tracking-wide text-accent uppercase">
-                            Offer<span className='text-accent'>Up</span>
+                       <img src={logo} width={58} alt="" />
+                        <span className="ml-2 text-xl font-bold tracking-wide text-white ">
+                             <img src={logo2} width={156} alt="" />
+                           
                         </span>
                     </a>
                     <div className="mt-6 lg:max-w-sm">
                         <p className="text-sm text-neutral">
-                        Just like sports coaches help athletes excel at soccer or swimming, health coaches help people excel at their health..
+                        Offer Up is a platform on which you can buy and sell Your bikes! We help people buy and sell used Motorcycles.  our solutions are built to be safe, smart, and convenient for our customers.
                         </p>
                         <p className="mt-4 text-sm text-neutral">
-                        A health coach is a professional who uses evidence-based conversation and strategies to engage patients (also known as clients) in behavior change that improves their health.  
+                         Our Website will help you to purchase your desired motorcycle at a convenient price. 
                         </p>
                     </div>
                 </div>

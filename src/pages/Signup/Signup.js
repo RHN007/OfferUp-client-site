@@ -4,14 +4,34 @@ import { FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 import signImg from '../../assets/SignUpGif.gif'
+import { toast } from 'react-toastify';
 
 const Signup = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { createUser, updateUser } = useContext(AuthContext);
-    const [signUpError, setSignUPError] = useState('');
+    const [signUpError, setSignUpError] = useState('');
 
     const handleSignUp = (data) => {
         console.log(data)
+        setSignUpError('')
+        createUser(data.email, data.password)
+        .then(result => {
+            const user = result.user; 
+            toast.success('User created Successfully',{
+                position: toast.POSITION.TOP_CENTER
+              })
+            const userInfo = {
+                displayName:data.name 
+            }
+            updateUser(userInfo)
+            .then(() => {
+                console.log(data.name, data.email)
+            })
+            .catch(error => console.log(error))
+        })
+        .catch(error => {
+            setSignUpError(error.message)
+        })
     }
 
     return (

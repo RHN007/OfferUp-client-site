@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
-import logo from '../../../assets/logo2.png'
+import logo from '../../../assets/3-OfferUp.webp'
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -19,13 +19,13 @@ const Navbar = () => {
         {user?.uid ?
             <>
                 <li><NavLink  className='rounded-xl' to="/dashboard">Dashboard</NavLink></li>
-                <li><button onClick={handleLogOut}>Sign out</button></li>
+                <li><button onClick={handleLogOut}>SIGN OUT</button></li>
             </>
             : <li><NavLink  className='rounded-xl' to="/login">Login</NavLink></li>}
     </React.Fragment>
 
     return (
-        <div className="navbar bg-accent rounded-xl flex justify-between  uppercase font-bold">
+        <div className="navbar bg-accent rounded-xl flex justify-between text-green-800  uppercase font-bold">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -35,7 +35,7 @@ const Navbar = () => {
                         {menuItems}
                     </ul>
                 </div>
-                <Link  to="/" > <img src={logo} className="rounded-2xl" width={156}  alt="" /> </Link>
+                <Link  to="/" > <img src={logo} className="rounded-2xl ml-5" width={156}  alt="" /> </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">

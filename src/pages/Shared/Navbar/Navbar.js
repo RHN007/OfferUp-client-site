@@ -14,7 +14,7 @@ const Navbar = () => {
 
     const menuItems = <React.Fragment>
         <li ><NavLink  className='rounded-xl ' to="/">Home</NavLink></li>
-        <li><NavLink  className='rounded-xl ' to="/appointment">Appointment</NavLink></li>
+        <li><NavLink  className='rounded-xl ' to="/products">Products</NavLink></li>
         <li><NavLink  className='rounded-xl' to="/about">About</NavLink></li>
         {user?.uid ?
             <>
@@ -25,7 +25,7 @@ const Navbar = () => {
     </React.Fragment>
 
     return (
-        <div className="navbar bg-accent rounded-xl flex justify-between  font-bold">
+        <div className="navbar bg-accent rounded-xl flex justify-between  uppercase font-bold">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">

@@ -4,6 +4,7 @@ import Banner from '../Banner/Banner';
 import Category from '../Category/Category';
 import DeliveryInfo from '../DeliveryInfo/DeliveryInfo';
 import Feedback from '../Feedback/Feedback';
+import ShowFeedback from '../Feedback/ShowFeedback';
 import Testimonial from '../Tesmonial/Testimonial';
 
 const Home = () => {
@@ -14,6 +15,7 @@ const Home = () => {
             <Category></Category>
             <DeliveryInfo></DeliveryInfo>
             <Testimonial></Testimonial>
+            <ShowFeedback></ShowFeedback>
             <Feedback></Feedback>
         </div>
     );

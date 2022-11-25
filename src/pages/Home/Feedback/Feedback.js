@@ -4,11 +4,11 @@ const Feedback = () => {
   
     return (
         <FeedBack
-        style={{zIndex:'2', marginLeft:'20px', position:'fixed'}}
+        style={{zIndex:'2', marginLeft:'20px', position:'fixed' }}
         
         position="left"
         numberOfStars={5}
-        headerText="Offer Up"
+        headerText="Feedback"
         bodyText="Write Your Thought"
         buttonText="Please give us your feedback"
         handleClose={() => console.log("handleclose")}

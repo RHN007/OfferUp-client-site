@@ -1,60 +1,86 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 import signImg from '../../assets/Signup.gif'
 import { toast } from 'react-toastify';
 import { GoogleAuthProvider } from 'firebase/auth';
 import useTitle from '../../hooks/useTitle';
+import useToken from '../../hooks/useToken';
 
 const Signup = () => {
     useTitle('SignUp')
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const { createUser, updateUser,googleSingIn } = useContext(AuthContext);
+    const { createUser, updateUser, googleSingIn } = useContext(AuthContext);
     const [signUpError, setSignUpError] = useState('');
+    const [createdUserEmail, setCreatedUserEmail] = useState('')
+    const [token] = useToken(createdUserEmail);
+    const navigate = useNavigate();
 
+    if(token){
+        navigate('/');
+    }
 
-    const handleGoogleSingIn= () => {
+    const handleGoogleSingIn = () => {
         googleSingIn()
-        .then(result => {
-            const credential = GoogleAuthProvider.credentialFromResult(result)
-            const token = credential.accessToken; 
-            const user = result.user
-            console.log(user)
-        })
-        .catch(error => {
-            console.log(error)
-            setSignUpError(error.message)
+            .then(result => {
+                const credential = GoogleAuthProvider.credentialFromResult(result)
+                const token = credential.accessToken;
+                const user = result.user
+                console.log(user)
+            })
+            .catch(error => {
+                console.log(error)
+                setSignUpError(error.message)
             })
     }
 
 
 
-    
-    
+
+
     const handleSignUp = (data) => {
         console.log(data)
         setSignUpError('')
         createUser(data.email, data.password)
-        .then(result => {
-            const user = result.user; 
-            toast.success('User created Successfully',{
-                position: toast.POSITION.TOP_CENTER
-              })
-            const userInfo = {
-                displayName:data.name 
-            }
-            updateUser(userInfo)
-            .then(() => {
-                console.log(data.name, data.email)
+            .then(result => {
+                const user = result.user;
+                toast.success('User created Successfully', {
+                    position: toast.POSITION.TOP_CENTER
+                })
+                const userInfo = {
+                    displayName: data.name
+                }
+                updateUser(userInfo)
+                    .then(() => {
+                        console.log(data.name, data.email)
+                        saveUser(data.name, data.email);
+                    })
+                    .catch(error => console.log(error))
             })
-            .catch(error => console.log(error))
-        })
-        .catch(error => {
-            setSignUpError(error.message)
-        })
+            .catch(error => {
+                setSignUpError(error.message)
+            })
     }
+    const saveUser = (name, email) => {
+        const user = { name, email };
+        fetch('http://localhost:9000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                setCreatedUserEmail(email);
+                console.log(data)
+            })
+    }
+
+
+
 
     return (
         <div>
@@ -71,6 +97,7 @@ const Signup = () => {
                                     })} className="input input-bordered w-full max-w-xs" />
                                     {errors.name && <p className='text-red-500'>{errors.name.message}</p>}
                                 </div>
+                          
                                 <div className="form-control w-full max-w-xs">
                                     <label className="label"> <span className="label-text">Email</span></label>
                                     <input type="text"
@@ -89,9 +116,9 @@ const Signup = () => {
                                     })} className="input input-bordered w-full max-w-xs" />
                                     {errors.password && <p className='text-red-500'>{errors.password.message}</p>}
                                 </div>
-                                    <input className='btn btn-primary w-full mt-4' value="Sign Up" type="submit" />
-                                    {signUpError && <p className='text-red-600'>{signUpError}</p>}
-                               
+                                <input className='btn btn-primary w-full mt-4' value="Sign Up" type="submit" />
+                                {signUpError && <p className='text-red-600'>{signUpError}</p>}
+
                             </form>
                             <p>Already have an account <Link className='text-secondary' to="/login">Please Login</Link></p>
                             <div className="divider">OR</div>

@@ -11,9 +11,9 @@ const Feedback = () => {
         headerText="Feedback"
         bodyText="Write Your Thought"
         buttonText="Please give us your feedback"
-        handleClose={() => console.log("handleclose")}
+        handleClose={() => console.log("handleClose")}
         handleSubmit={(data) => 
-            fetch('xxxxxx', {
+            fetch('http://localhost:9000/feedback', {
                 headers: {
                     Accept: 'application/json',
                     'Content-Type': 'application/json'

@@ -10,7 +10,7 @@ const Feedback = () => {
         numberOfStars={5}
         headerText="Feedback"
         bodyText="Write Your Thought"
-        buttonText="Please give us your feedback"
+        buttonText="Please give us feedback Here"
         handleClose={() => console.log("handleClose")}
         handleSubmit={(data) => 
             fetch('http://localhost:9000/feedback', {

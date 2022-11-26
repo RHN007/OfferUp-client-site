@@ -18,7 +18,7 @@ const Signup = () => {
     const [token] = useToken(createdUserEmail);
     const navigate = useNavigate();
 
-    if(token){
+    if (token) {
         navigate('/');
     }
 
@@ -55,7 +55,7 @@ const Signup = () => {
                 updateUser(userInfo)
                     .then(() => {
                         console.log(data.name, data.email)
-                        saveUser(data.name, data.email);
+                        saveUser(data.name, data.email, data.userType);
                     })
                     .catch(error => console.log(error))
             })
@@ -63,8 +63,8 @@ const Signup = () => {
                 setSignUpError(error.message)
             })
     }
-    const saveUser = (name, email) => {
-        const user = { name, email };
+    const saveUser = (name, email, userType) => {
+        const user = { name, email, userType };
         fetch('http://localhost:9000/users', {
             method: 'POST',
             headers: {
@@ -97,7 +97,7 @@ const Signup = () => {
                                     })} className="input input-bordered w-full max-w-xs" />
                                     {errors.name && <p className='text-red-500'>{errors.name.message}</p>}
                                 </div>
-                          
+
                                 <div className="form-control w-full max-w-xs">
                                     <label className="label"> <span className="label-text">Email</span></label>
                                     <input type="text"
@@ -106,6 +106,16 @@ const Signup = () => {
                                         })}
                                         className="input input-bordered w-full max-w-xs" />
                                     {errors.email && <p className='text-red-600'>{errors.email?.message}</p>}
+                                </div>
+                                <div className="form-control w-full max-w-xs">
+                                    <label className="label"> <span className="label-text">Create Account As a Buyer or Seller</span></label>
+                                    <select
+                                        {...register('userType')}
+                                        className="select input-bordered w-full max-w-xs">
+                                        <option>Buyer</option>
+                                        <option >Seller</option>
+
+                                    </select>
                                 </div>
                                 <div className="form-control w-full max-w-xs">
                                     <label className="label"> <span className="label-text">Password</span></label>

@@ -8,6 +8,8 @@ import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
+import 'react-day-picker/dist/style.css';
+import 'react-datepicker/dist/react-datepicker.css'
 
 
 

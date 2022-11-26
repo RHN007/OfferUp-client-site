@@ -10,11 +10,11 @@ const FeedbackCard = ({review}) => {
             <div className="card-body">
                 <p className='text-secondary font-bold text-2xl'>Name: {name}</p>
                 <div >
-                    <div className="avatar mr-6">
-                       <p>Email:{email}</p>
+                    <div className="avatar">
+                       <p className='font-bold'>Email:{email}</p>
                     </div>
                     <div>
-                        <p>{message}</p>
+                        <p> <span className='font-bold'>Comments:</span> {message}</p>
                         {/* <h5 className="text-lg">{rating}</h5> */}
                 {
                     starArray.map (i => (<FontAwesomeIcon
@@ -24,8 +24,6 @@ const FeedbackCard = ({review}) => {
                     
                     ></FontAwesomeIcon>))
                 }
-
-
  
                     </div>
                 </div>

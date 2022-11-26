@@ -1,10 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import DashboardLayout from "../layout/DashboardLayout";
 import Main from "../layout/Main";
-import AddCart from "../pages/Advertisements/AddCart";
+import About from "../pages/About/About";
 import Advertisements from "../pages/Advertisements/Advertisements";
+import Blogs from "../pages/Blogs/Blogs";
 import AddAdvertisement from "../pages/Dashboard/AddAdvertisement/AddAdvertisement";
-import AdvertisedItems from "../pages/Dashboard/AdvertisedItems/AdvertisedItems";
 import AllUsers from "../pages/Dashboard/Dashboard/AllUsers/AllUsers";
 import ManageAd from "../pages/Dashboard/ManageAd/ManageAd";
 import MyAdvertisements from "../pages/Dashboard/MyAdvertisements/MyAdvertisements";
@@ -12,6 +12,7 @@ import Home from "../pages/Home/Home/Home";
 import Login from "../pages/Login/Login";
 import PageNotFound from "../pages/Shared/PageNotFound/PageNotFound";
 import Signup from "../pages/Signup/Signup";
+import PrivateRoutes from "./PrivateRoute/PrivateRoute";
 
 
 
@@ -32,6 +33,9 @@ const router = createBrowserRouter([
                 path: '/login', 
                 element: <Login></Login>
 
+            },{
+                path: '/about',
+                element: <About></About>
             },
             {
                 path: '/signup', 
@@ -41,12 +45,16 @@ const router = createBrowserRouter([
                 path: '/category',
                 element: <Advertisements/> 
 
+            },
+            {
+                path: '/blogs', 
+                element: <Blogs></Blogs>
             }
         ]
     }, 
     {
         path: '/dashboard', 
-        element: <DashboardLayout></DashboardLayout>,
+        element: <PrivateRoutes><DashboardLayout></DashboardLayout></PrivateRoutes>,
         children: [
             {
                 path:'/dashboard',

@@ -16,6 +16,7 @@ const Navbar = () => {
 
     const menuItems = <React.Fragment>
         <li><NavLink className='rounded-xl' to="/about">About</NavLink></li>
+        <li><NavLink className='rounded-xl' to="/blogs">Blogs</NavLink></li>
         {user?.uid ?
             <>  
              {user?.photoURL ? 

@@ -1,7 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import DashboardLayout from "../layout/DashboardLayout";
 import Main from "../layout/Main";
+import AddCart from "../pages/Advertisements/AddCart";
+import Advertisements from "../pages/Advertisements/Advertisements";
 import AddAdvertisement from "../pages/Dashboard/AddAdvertisement/AddAdvertisement";
+import AdvertisedItems from "../pages/Dashboard/AdvertisedItems/AdvertisedItems";
 import AllUsers from "../pages/Dashboard/Dashboard/AllUsers/AllUsers";
 import ManageAd from "../pages/Dashboard/ManageAd/ManageAd";
 import MyAdvertisements from "../pages/Dashboard/MyAdvertisements/MyAdvertisements";
@@ -33,6 +36,11 @@ const router = createBrowserRouter([
             {
                 path: '/signup', 
                 element: <Signup></Signup>
+            },
+            {
+                path: '/category',
+                element: <Advertisements/> 
+
             }
         ]
     }, 
@@ -55,7 +63,8 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/manageAd',
                 element: <ManageAd></ManageAd>
-            }
+            },
+       
         ]
     },
     {

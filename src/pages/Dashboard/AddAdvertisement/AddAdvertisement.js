@@ -1,17 +1,19 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Loading from '../../Shared/Loading/Loading';
 import DatePicker from 'react-datepicker'
+import { AuthContext } from '../../../contexts/AuthProvider';
 
 const AddAdvertisement = () => {
+    const {user} = useContext(AuthContext)
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [Cdate, setDate] = useState(new Date().toLocaleDateString('fr-FR'));
     const navigate = useNavigate()
     const imageHostKey = process.env.REACT_APP_imageHostKey;
-    console.log(imageHostKey)
+
 
     const { data: categoryList, isLoading } = useQuery({
         queryKey: ['productCategory'],
@@ -42,7 +44,9 @@ const AddAdvertisement = () => {
                         brand: data.brand,
                         image: imgData.data.url,
                         price: data.price,
+                        email: data.email,
                         mobileNumber: data.mobileNumber,
+                        location: data.location,
                         description: data.description,
                         condition: data.condition,
                         purchaseDate: data.dateSelection
@@ -134,7 +138,22 @@ const AddAdvertisement = () => {
                     })} className="input input-bordered w-full max-w-xs" />
                     {errors.mobileNumber && <p className='text-red-500'>{errors.mobileNumber.message}</p>}
                 </div>
-
+                <div className="form-control w-full max-w-xs">
+                    <label className="label"> <span className="label-text">location</span></label>
+                    <input type="text" {...register("location", {
+                        required: "Mobile Number is Required"
+                    })} className="input input-bordered w-full max-w-xs" />
+                    {errors.location && <p className='text-red-500'>{errors.location.message}</p>}
+                </div>
+                <div className="form-control w-full max-w-xs">
+                    <label className="label"> <span className="label-text">Email</span></label>
+                    <input type="text" value={user.email}
+                        {...register("email", {
+                            required: "Email Address is required"
+                        })}
+                        className="input input-bordered w-full max-w-xs" />
+                    {errors.email && <p className='text-red-600'>{errors.email?.message}</p>}
+                </div>
                 <div className="form-control w-full max-w-xs">
                     <label className="label"> <span className="label-text">Description</span></label>
 

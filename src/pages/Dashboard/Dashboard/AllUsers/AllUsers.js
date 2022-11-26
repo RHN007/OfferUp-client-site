@@ -1,10 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { toast } from 'react-toastify';
+import Loading from '../../../Shared/Loading/Loading';
 
 const AllUsers = () => {
 
-    const { data: users = [], refetch } = useQuery({
+    const { data: users = [],isLoading, refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
             const res = await fetch('http://localhost:9000/users');
@@ -28,6 +29,25 @@ const AllUsers = () => {
                 }
             })
     }
+    const handleUserDelete = (user) => {
+        fetch(`http://localhost:9000/users/${user._id}`, {
+            method: 'DELETE',
+            // headers: {
+            //     authorization: `bearer ${localStorage.getItem('accessToken')}`
+            // }
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.deletedCount>0){
+                refetch()
+                toast.success(` ${user.name} deleted Successfully`)
+            }
+        })
+    }
+    if(isLoading) {
+        return <Loading></Loading>
+    }
+
 
 
 
@@ -52,7 +72,7 @@ const AllUsers = () => {
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
                                 <td>{user?.role !== 'admin' && <button onClick={() => handleMakeAdmin(user._id)} className='btn btn-xs btn-primary'>Make Admin</button>}</td>
-                                <td><button className='btn btn-xs btn-danger'>Delete</button></td>
+                                <td><button onClick={()=>handleUserDelete(user)} className='btn btn-xs btn-danger'>Delete</button></td>
                             </tr>)
                         }
                     </tbody>

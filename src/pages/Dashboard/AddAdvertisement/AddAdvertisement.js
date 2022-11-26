@@ -61,7 +61,7 @@ const AddAdvertisement = () => {
                         .then(result => {
                             console.log(result);
                             toast.success(`Your ${data.name} is advertised successfully`)
-                            navigate('/dashboard/manageAdvertisement')
+                            navigate('/dashboard/manageAd')
                         })
                 }
 
@@ -113,7 +113,7 @@ const AddAdvertisement = () => {
                     </select>
                 </div>
                 <div className="form-control w-full max-w-xs">
-                    <label className="label"> <span className="label-text">Select Purchase Date </span></label>
+                    <label className="label"> <span className="label-text">Advertised Date </span></label>
                     <div {...register('dateSelection')}
                         className=" border input-bordered  max-w-xs">
                         <DatePicker
@@ -121,7 +121,7 @@ const AddAdvertisement = () => {
                             value={Cdate}
                             onChange={(date) => {
                                 const d = new Date(date).toLocaleDateString('fr-FR');
-                                // console.log(d);
+                                console.log(d);
                                 setDate(d);
                             }}
                         />

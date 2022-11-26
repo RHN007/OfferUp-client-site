@@ -2,6 +2,8 @@ import { createBrowserRouter } from "react-router-dom";
 import DashboardLayout from "../layout/DashboardLayout";
 import Main from "../layout/Main";
 import AddAdvertisement from "../pages/Dashboard/AddAdvertisement/AddAdvertisement";
+import AllUsers from "../pages/Dashboard/Dashboard/AllUsers/AllUsers";
+import ManageAd from "../pages/Dashboard/ManageAd/ManageAd";
 import MyAdvertisements from "../pages/Dashboard/MyAdvertisements/MyAdvertisements";
 import Home from "../pages/Home/Home/Home";
 import Login from "../pages/Login/Login";
@@ -43,8 +45,16 @@ const router = createBrowserRouter([
                 element: <MyAdvertisements></MyAdvertisements>
             },
             {
+                path: '/dashboard/allusers',
+                element: <AllUsers></AllUsers>
+            },
+            {
                 path: '/dashboard/addAdvertisement',
                 element: <AddAdvertisement></AddAdvertisement>
+            },
+            {
+                path: '/dashboard/manageAd',
+                element: <ManageAd></ManageAd>
             }
         ]
     },

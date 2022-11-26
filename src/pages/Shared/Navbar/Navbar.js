@@ -18,12 +18,11 @@ const Navbar = () => {
         <li><NavLink className='rounded-xl' to="/about">About</NavLink></li>
         {user?.uid ?
             <>  
-            <li>   {user?.photoURL ? 
+             {user?.photoURL ? 
             <img className='h-12'  src={user?.photoURL} alt="userImage" />
-            : <FaUser></FaUser>  }</li>
-              <span ><p>{user?.displayName}</p></span>
+            : <FaUser></FaUser>  }
+           <p className='ml-2'>{user?.displayName}</p>
             <li className='font-semibold'><NavLink to='/dashboard'>Dashboard</NavLink></li>
-            <li className='font-semibold'><NavLink to='/added'>Added Services</NavLink></li>
               <NavLink className='font-semibold'><button className='btn-ghost' onClick={handleLogOut} >SignOut</button></NavLink>
 
           </> 

@@ -112,8 +112,8 @@ const Signup = () => {
                                     <select
                                         {...register('userType')}
                                         className="select input-bordered w-full max-w-xs">
-                                        <option>Buyer</option>
-                                        <option >Seller</option>
+                                        <option>buyer</option>
+                                        <option >seller</option>
 
                                     </select>
                                 </div>

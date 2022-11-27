@@ -65,7 +65,7 @@ const AddAdvertisement = () => {
                         .then(result => {
                             console.log(result);
                             toast.success(`Your ${data.name} is advertised successfully`)
-                            navigate('/dashboard/manageAd')
+                            navigate('/dashboard/userAd')
                         })
                 }
 

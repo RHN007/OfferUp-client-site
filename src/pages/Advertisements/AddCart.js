@@ -1,18 +1,24 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { AuthContext } from '../../contexts/AuthProvider';
 
 const AddCart = ({ ad, refetch }) => {
+    const {user} = useContext(AuthContext)
     // console.log(ad)
     const {_id, brand, condition, description, image, price, location, name, phone } = ad
     
     const handleBookingButton = (event) => {
         const bookings = {
-            name, 
+            productName:name,
+            name: user.displayName, 
             price, 
             brand, 
             image, 
-            phone
+            phone,
+            email:user.email,
+            condition, 
+            location
         }
         fetch('http://localhost:9000/bookings', {
             method: 'POST',

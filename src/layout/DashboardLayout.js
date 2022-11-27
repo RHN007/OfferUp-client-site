@@ -21,11 +21,12 @@ const DashboardLayout = () => {
                     <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 text-base-content">
                         <li><Link to="/dashboard">Dashboard</Link></li>
+                        <li><Link to="/dashboard/bookings">My Bookings</Link></li>
                         {
                             isSeller && 
                             <>
                             <li><Link to="/dashboard/addAdvertisement">Advertise Your Product</Link></li>
-                            {/* <li><Link to="/dashboard/userAd">My Advertisement</Link></li> */}
+                            <li><Link to="/dashboard/userAd">My Advertisement</Link></li>
                             </>
                           
                         }

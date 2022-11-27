@@ -44,7 +44,7 @@ const AddAdvertisement = () => {
                         brand: data.brand,
                         image: imgData.data.url,
                         price: data.price,
-                        email: data.email,
+                        email: user.email,
                         mobileNumber: data.mobileNumber,
                         location: data.location,
                         description: data.description,

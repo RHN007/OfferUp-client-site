@@ -9,6 +9,8 @@ import AdvertisedItems from "../pages/Dashboard/AdvertisedItems/AdvertisedItems"
 import AllUsers from "../pages/Dashboard/Dashboard/AllUsers/AllUsers";
 import ManageAd from "../pages/Dashboard/ManageAd/ManageAd";
 import MyAdvertisements from "../pages/Dashboard/MyAdvertisements/MyAdvertisements";
+import MyBookings from "../pages/Dashboard/MyBookings/MyBookings";
+import Payment from "../pages/Dashboard/Payment/Payment";
 import Home from "../pages/Home/Home/Home";
 import Login from "../pages/Login/Login";
 import PageNotFound from "../pages/Shared/PageNotFound/PageNotFound";
@@ -62,6 +64,10 @@ const router = createBrowserRouter([
                 element: <MyAdvertisements></MyAdvertisements>
             },
             {
+                path: '/dashboard/bookings',
+                element: <MyBookings></MyBookings>
+            },
+            {
                 path: '/dashboard/allusers',
                 element: <AllUsers></AllUsers>
             },
@@ -76,6 +82,11 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/manageAd',
                 element: <ManageAd></ManageAd>
+            },
+            {
+                path: '/dashboard/payment/:id',
+                element: <Payment></Payment>,
+                loader: ({params}) => fetch(`http://localhost:9000/bookings/${params.id}`)
             },
        
         ]

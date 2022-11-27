@@ -18,7 +18,7 @@ const AllUsers = () => {
         fetch(`http://localhost:9000/users/admin/${id}`, {
             method: 'PUT',
             headers: {
-                // authorization: `bearer ${localStorage.getItem('accessToken')}`
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
             }
         })
             .then(res => res.json())
@@ -32,9 +32,9 @@ const AllUsers = () => {
     const handleUserDelete = (user) => {
         fetch(`http://localhost:9000/users/${user._id}`, {
             method: 'DELETE',
-            // headers: {
-            //     authorization: `bearer ${localStorage.getItem('accessToken')}`
-            // }
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
         })
         .then(res => res.json())
         .then(data => {

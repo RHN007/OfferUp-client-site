@@ -5,6 +5,7 @@ import About from "../pages/About/About";
 import Advertisements from "../pages/Advertisements/Advertisements";
 import Blogs from "../pages/Blogs/Blogs";
 import AddAdvertisement from "../pages/Dashboard/AddAdvertisement/AddAdvertisement";
+import AdvertisedItems from "../pages/Dashboard/AdvertisedItems/AdvertisedItems";
 import AllUsers from "../pages/Dashboard/Dashboard/AllUsers/AllUsers";
 import ManageAd from "../pages/Dashboard/ManageAd/ManageAd";
 import MyAdvertisements from "../pages/Dashboard/MyAdvertisements/MyAdvertisements";
@@ -67,6 +68,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/addAdvertisement',
                 element: <AddAdvertisement></AddAdvertisement>
+            },
+            {
+                path: '/dashboard/userAd', 
+                element: <AdvertisedItems></AdvertisedItems>
             },
             {
                 path: '/dashboard/manageAd',

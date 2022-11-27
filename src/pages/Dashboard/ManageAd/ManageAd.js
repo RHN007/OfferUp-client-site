@@ -15,9 +15,9 @@ const ManageAd = () => {
         queryFn: async () => {
             try {
                     const res = await fetch(`http://localhost:9000/advertisement`,{
-                        // headers: {
-                        //     authorization: `bearer ${localStorage.getItem('accessToken')}`
-                        // }
+                        headers: {
+                            authorization: `bearer ${localStorage.getItem('accessToken')}`
+                        }
                     })
                     const data = await res.json()
                     return data 
@@ -32,9 +32,9 @@ const ManageAd = () => {
         console.log(ad)
         fetch(`http://localhost:9000/advertisement/${ad._id}`, {
             method: 'DELETE',
-            // headers: {
-            //     authorization: `bearer ${localStorage.getItem('accessToken')}`
-            // }
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
         })
         .then(res => res.json())
         .then(data => {

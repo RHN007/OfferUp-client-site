@@ -7,10 +7,15 @@ import Loading from '../../Shared/Loading/Loading';
 
 const AdvertisedItems = () => {
     const {user} = useContext(AuthContext)
+    const [myAd, setMyAd] = useState([])
+    // const [statusUpdate, setStatusUpdate] = useState(null)
     const [deleteAdd, setDeleteAdd] = useState(null)
     const closeModal = () => {
         setDeleteAdd(null)
     }
+    // const closeModal2 = () => {
+    //     setStatusUpdate(null)
+    // }
 
     const { data: advertisement , refetch, isLoading} = useQuery({
         queryKey: ['advertisement', user?.email], 
@@ -37,7 +42,27 @@ const AdvertisedItems = () => {
             }
         })
     }
-
+    const handleStatusUpdate = id => {
+        fetch(`http://localhost:9000/advertisements/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'content-type' : 'application/json'
+            },
+            body: JSON.stringify({status: 'Sold'})
+        })
+        .then(res => res.json())
+        .then(data => {console.log(data)
+                if(data.modifiedCount>0){
+                        const remaining = myAd.filter(odr => odr._id !== id)
+                        const approving = myAd.find(odr => odr._id ===id)
+                        approving.status = 'Sold'
+                        const newOrders = [ approving , ...remaining]
+                        setMyAd(newOrders)
+  
+                }}
+        )
+ }
+ 
 
 
 if(isLoading){
@@ -59,12 +84,13 @@ if(isLoading){
                         <th>Brand</th>
                         <th>Price</th>
                         <th>Advertised date</th>
+                        <th>Status</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     {
-                        advertisement.map((ad, i) => <tr key={ad._id}>
+                        advertisement.map((ad, i) => <tr key={ad._id} handleStatusUpdate={handleStatusUpdate}>
                             <th>{i + 1}</th>
                             <td><div className="avatar">
                                 <div className="w-24 ">
@@ -75,6 +101,11 @@ if(isLoading){
                             <td>{ad.brand}</td>
                             <td>{ad.price}</td>
                             <td>{ad.purchaseDate}</td>
+                            <th>
+                <label 
+                onClick={() => handleStatusUpdate(ad._id)}
+                className="btn  btn-secondary btn-xs" htmlFor="confirmation-modal" >{ad.status ? ad.status : 'Available'}</label>
+            </th>
                             <td>
                                 <label onClick={() =>setDeleteAdd(ad)} htmlFor="confirmation-modal" className="btn btn-sm btn-error">Delete</label>
                             </td>
@@ -83,6 +114,20 @@ if(isLoading){
                 </tbody>
             </table>
         </div>
+        {/* {
+            statusUpdate && <ConfirmationModal
+            title={`Are you sure you want to Update?`}
+                message={`If you delete  It cannot be undone.`}
+                successAction = {handleStatusUpdate}
+                successButtonName="Status"
+                modalData = {statusUpdate}
+                closeModal = {closeModal2}>
+            
+
+            </ConfirmationModal>
+        } */}
+         
+        
         {
             deleteAdd && <ConfirmationModal
                 title={`Are you sure you want to delete?`}

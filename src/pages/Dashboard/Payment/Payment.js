@@ -11,7 +11,7 @@ const stripePromise = loadStripe('pk_test_51M6sjdFjPzqrkDjrkcgbelCERmUXETNeWM2er
 const Payment = () => {
     const booking = useLoaderData()
     // const navigation = useNavigation();
-    const { name, price, brand } = booking
+    const { name, price, brand, productName } = booking
     
     // if(navigation.state === "loading"){
     //     return <Loading></Loading>
@@ -20,10 +20,10 @@ const Payment = () => {
     
     return (
         <div>
-            <h3>Payment for {name}</h3>
-            <p className='text-xl'> Please pay ${price} for your purchase of {brand} bike  </p>
+            <h3 className='text-primary mt-10'>Payment for {productName} by {name}</h3>
+            <p className='text-xl font-bold'> Please pay ${price} for your purchase of {brand} bike  </p>
 
-            <div className='w-96 my-12'>
+            <div className='w-96 my-12 border '>
                 <Elements stripe={stripePromise}>
                     <CheckoutForm 
                     booking={booking}

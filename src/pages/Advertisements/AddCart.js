@@ -6,7 +6,7 @@ import { AuthContext } from '../../contexts/AuthProvider';
 const AddCart = ({ ad, refetch }) => {
     const {user} = useContext(AuthContext)
     // console.log(ad)
-    const {_id, brand, condition, description, image, price, location, name, phone } = ad
+    const {_id, brand, condition, description, image, price, location, name, phone, status, email } = ad
     
     const handleBookingButton = (event) => {
         const bookings = {
@@ -18,7 +18,8 @@ const AddCart = ({ ad, refetch }) => {
             phone,
             email:user.email,
             condition, 
-            location
+            location,
+            status
         }
         fetch('http://localhost:9000/bookings', {
             method: 'POST',
@@ -41,6 +42,41 @@ const AddCart = ({ ad, refetch }) => {
         })
 
     }
+
+    const handleWishList = (event) => {
+        const wishlist = {
+            productName:name,
+            name: user.displayName, 
+            price, 
+            brand, 
+            image, 
+            phone,
+            email:user.email,
+            condition, 
+            location,
+            status
+        }
+        fetch('http://localhost:9000/wishlist', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(wishlist)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            if(data.acknowledged){
+                toast.success('Added to Your wishlist')
+                refetch()
+            }
+            else {
+                toast.error(data.message)
+            }
+            
+        })
+
+    }
     
     
     return (
@@ -53,10 +89,14 @@ const AddCart = ({ ad, refetch }) => {
                 <p>Brand:{brand}</p>
                 <p className='font-bold'>Price: BDT{price}</p>
                 <p>Location:{location?location:' Not Found'}</p>
-                <p className='text-green-800'>Condition: {condition}</p>
+                <p className='text-green-800 '>Condition: {condition}</p>
+                <p className='text-blue-500 font-bold'>Status: {status}</p>
                 <p>{description.length>100? <p>{description.slice(0,20) + '....'}<Link to={`/category/${_id}`}>Read More</Link> </p> : <p>{description}</p> }</p>
                 <div className="card-actions justify-end">
                     <button onClick={() => handleBookingButton(_id)} className="btn btn-primary w-full">Booking</button>
+                </div>
+                <div className="card-actions justify-end">
+                    <button onClick={() => handleWishList(_id)} className="btn btn-accent w-full">Wishlist</button>
                 </div>
             </div>
         </div>

@@ -1,13 +1,15 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Loading from '../../Shared/Loading/Loading';
 import DatePicker from 'react-datepicker'
 import { AuthContext } from '../../../contexts/AuthProvider';
 
 const AddAdvertisement = () => {
+    const userinfo = useLoaderData()
+    // console.log(userinfo.status)
     const {user} = useContext(AuthContext)
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [Cdate, setDate] = useState(new Date().toLocaleDateString('fr-FR'));
@@ -42,7 +44,7 @@ const AddAdvertisement = () => {
                     const advertisement = {
                         name: data.name,
                         sellerName: user.displayName,
-                        sellerStatus: user.status, 
+                        sellerStatus: data.status, 
                         brand: data.brand,
                         image: imgData.data.url,
                         price: data.price,
@@ -98,6 +100,19 @@ const AddAdvertisement = () => {
                                 key={category._id}
                                 value={category.category_name}
                             >{category.category_name}</option>)
+                        }
+                    </select>
+                </div>
+                <div className="form-control w-full max-w-xs">
+                    <label className="label"> <span className="label-text">Seller Status</span></label>
+                    <select
+                        {...register('status')}
+                        className="select input-bordered w-full max-w-xs">
+                        {
+                            userinfo.map(user => <option
+                                key={user._id}
+                                value={user.status}
+                            >{user.status}</option>)
                         }
                     </select>
                 </div>

@@ -18,6 +18,7 @@ import PageNotFound from "../pages/Shared/PageNotFound/PageNotFound";
 import Signup from "../pages/Signup/Signup";
 import PrivateRoutes from "./PrivateRoute/PrivateRoute";
 import AdminRoute from "./AdminRoutes/AdminRoute";
+import AddCart from "../pages/Advertisements/AddCart";
 
 
 
@@ -54,7 +55,8 @@ const router = createBrowserRouter([
             {
                 path: '/blogs', 
                 element: <Blogs></Blogs>
-            }
+            },
+         
         ]
     }, 
     {
@@ -75,7 +77,8 @@ const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/addAdvertisement',
-                element: <AddAdvertisement></AddAdvertisement>
+                element: <AddAdvertisement></AddAdvertisement>,
+                loader: () => fetch('http://localhost:9000/users')
             },
             {
                 path: '/dashboard/userAd', 
@@ -94,6 +97,7 @@ const router = createBrowserRouter([
                 element: <Payment></Payment>,
                 loader: ({params}) => fetch(`http://localhost:9000/bookings/${params.id}`)
             },
+          
        
         ]
     },

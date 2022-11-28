@@ -10,7 +10,7 @@ const DeliveryInfo = () => {
                 <div>
                     <h1 className="text-5xl font-bold">Get items delivered to you with Doorstop delivery</h1>
                     <p className="py-6">Choose from over Hundreds of Motorcycle that can be delivered to your doorstep. Order online and enjoy our Buyer Protection program, which means that we’ll replace the item for FREE if it’s not as described in the ad!</p>
-                   <Link to='/products'><p className='text-center'><button className="btn btn-primary">Shop Now</button></p> </Link>
+                   <Link to='/category'><p className='text-center'><button className="btn btn-primary">Shop Now</button></p> </Link>
                 </div>
             </div>
         </div>

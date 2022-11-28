@@ -47,7 +47,6 @@ const DashboardLayout = () => {
                              <>
                                 <li><Link to="/dashboard/allusers">All users</Link></li>
                                 <li><Link to="/dashboard/manageAd">Manage Add</Link></li>
-                                <li><Link to="/dashboard/addAdvertisement">Advertise Your Product</Link></li>
                             </>
                         
                         }

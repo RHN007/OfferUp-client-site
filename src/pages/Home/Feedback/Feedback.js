@@ -4,8 +4,8 @@ const Feedback = () => {
   
     return (
         <FeedBack
-        style={{zIndex:'2', marginLeft:'20px', position:'fixed' }}
-        
+        style={{zIndex:'2', marginLeft:'20px', position:'fixed', color:'green' }}
+       
         position="left"
         numberOfStars={5}
         headerText="Feedback"

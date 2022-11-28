@@ -1,10 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useState } from 'react';
 import { toast } from 'react-toastify';
-import Loading from '../../../Shared/Loading/Loading';
+import Loading from '../../Shared/Loading/Loading';
 
 const AllUsers = () => {
-
+    const [myAd, setMyAd] = useState([])
     const { data: users = [],isLoading, refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
@@ -29,6 +29,35 @@ const AllUsers = () => {
                 }
             })
     }
+    
+    const handleUserStatusUpdate = (id) => {
+        fetch(`http://localhost:9000/user/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'content-type' : 'application/json'
+            },
+            body: JSON.stringify({status: 'Verified'})
+        })
+        .then(res => res.json())
+        .then(data => {console.log(data)
+                if(data.modifiedCount>0){
+                        const remaining = myAd.filter(odr => odr._id !== id)
+                        const approving = myAd.find(odr => odr._id ===id)
+                        // approving.status = 'verified'
+                        const newOrders = [ approving , ...remaining]
+                        setMyAd(newOrders)
+                        toast.success('Verification Successful')
+                        refetch()
+  
+                }}
+        )
+    }
+
+
+
+
+
+
     const handleUserDelete = (user) => {
         fetch(`http://localhost:9000/users/${user._id}`, {
             method: 'DELETE',
@@ -61,8 +90,10 @@ const AllUsers = () => {
                             <th></th>
                             <th>Name</th>
                             <th>Email</th>
+                            <th>User Type</th>
+                            <th>Verification</th>
                             <th>Admin</th>
-                            <th>Delete</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -71,6 +102,12 @@ const AllUsers = () => {
                                 <th>{i + 1}</th>
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
+                                <td className='font-bold text-primary'>{user.userType}</td>
+                                <td>
+                <label 
+                onClick={() => handleUserStatusUpdate(user._id)}
+                className="btn  btn-accent btn-xs" htmlFor="confirmation-modal" >{user.status ? user.status : 'Not Verified'}</label>
+            </td>
                                 <td>{user?.role !== 'admin' && <button onClick={() => handleMakeAdmin(user._id)} className='btn btn-xs btn-primary'>Make Admin</button>}</td>
                                 <td><button onClick={()=>handleUserDelete(user)} className='btn btn-xs btn-danger'>Delete</button></td>
                             </tr>)

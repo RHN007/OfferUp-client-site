@@ -6,7 +6,8 @@ import Advertisements from "../pages/Advertisements/Advertisements";
 import Blogs from "../pages/Blogs/Blogs";
 import AddAdvertisement from "../pages/Dashboard/AddAdvertisement/AddAdvertisement";
 import AdvertisedItems from "../pages/Dashboard/AdvertisedItems/AdvertisedItems";
-import AllUsers from "../pages/Dashboard/Dashboard/AllUsers/AllUsers";
+import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
+import MyWishList from "../pages/Dashboard/MyWishList/MyWishList";
 import ManageAd from "../pages/Dashboard/ManageAd/ManageAd";
 import MyAdvertisements from "../pages/Dashboard/MyAdvertisements/MyAdvertisements";
 import MyBookings from "../pages/Dashboard/MyBookings/MyBookings";
@@ -82,6 +83,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/manageAd',
                 element: <ManageAd></ManageAd>
+            },
+            {
+                path: '/dashboard/wishlist',
+                element: <MyWishList></MyWishList>
             },
             {
                 path: '/dashboard/payment/:id',

@@ -55,9 +55,11 @@ const AdvertisedItems = () => {
                 if(data.modifiedCount>0){
                         const remaining = myAd.filter(odr => odr._id !== id)
                         const approving = myAd.find(odr => odr._id ===id)
-                        approving.status = 'Sold'
+                        // approving.status = 'Sold'
                         const newOrders = [ approving , ...remaining]
                         setMyAd(newOrders)
+                        refetch()
+                        toast.success('Product Status Updated Successfully ')
   
                 }}
         )
@@ -90,7 +92,7 @@ if(isLoading){
                 </thead>
                 <tbody>
                     {
-                        advertisement.map((ad, i) => <tr key={ad._id} handleStatusUpdate={handleStatusUpdate}>
+                        advertisement.map((ad, i) => <tr key={ad._id}>
                             <th>{i + 1}</th>
                             <td><div className="avatar">
                                 <div className="w-24 ">
@@ -101,11 +103,11 @@ if(isLoading){
                             <td>{ad.brand}</td>
                             <td>{ad.price}</td>
                             <td>{ad.purchaseDate}</td>
-                            <th>
+                            <td>
                 <label 
                 onClick={() => handleStatusUpdate(ad._id)}
                 className="btn  btn-secondary btn-xs" htmlFor="confirmation-modal" >{ad.status ? ad.status : 'Available'}</label>
-            </th>
+            </td>
                             <td>
                                 <label onClick={() =>setDeleteAdd(ad)} htmlFor="confirmation-modal" className="btn btn-sm btn-error">Delete</label>
                             </td>

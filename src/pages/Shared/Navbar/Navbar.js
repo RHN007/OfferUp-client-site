@@ -30,11 +30,11 @@ const Navbar = () => {
             : <li><NavLink className='rounded-xl' to="/login">Login</NavLink></li>}
     </React.Fragment>
 
-    const subItems = <>
-         <li ><NavLink className= ' rounded-xl text-black ' to="/yamaha">Yamaha</NavLink></li>
-         <li ><NavLink className='rounded-xl text-black ' to="/honda">Honda</NavLink></li>
-         <li ><NavLink className='rounded-xl text-black ' to="/suzuki">Suzuki</NavLink></li>
-    </>
+    // const subItems = <>
+    //      <li ><NavLink className= ' rounded-xl text-black ' to="/yamaha">Yamaha</NavLink></li>
+    //      <li ><NavLink className='rounded-xl text-black ' to="/honda">Honda</NavLink></li>
+    //      <li ><NavLink className='rounded-xl text-black ' to="/suzuki">Suzuki</NavLink></li>
+    // </>
 
     return (
         <div className="navbar rounded bg-primary  flex justify-between md:text-accent  uppercase font-bold sticky top-0 z-50">
@@ -49,11 +49,11 @@ const Navbar = () => {
                         <li tabIndex={0}>
                             <NavLink className="justify-between rounded-xl" to="/category">
                                Advertisement
-                                <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+                                {/* <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg> */}
                             </NavLink>
-                            <ul className="p-2">
+                            {/* <ul className="p-2">
                                {subItems}
-                            </ul>
+                            </ul> */}
                         </li>
                         {menuItems}
                     </ul>
@@ -66,11 +66,11 @@ const Navbar = () => {
                     <li tabIndex={0}>
                     <NavLink className="justify-between rounded-xl" to="/category">
                                 advertisements
-                                <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+                                {/* <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg> */}
                     </NavLink>
-                        <ul className="p-2">
+                        {/* <ul className="p-2">
                         {subItems}
-                        </ul>
+                        </ul> */}
                     </li>
                     {menuItems}
                 </ul>

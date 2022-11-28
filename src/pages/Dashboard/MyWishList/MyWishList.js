@@ -36,6 +36,10 @@ const MyWishList = () => {
                 refetch()
                 toast.success(`Advertisement ${ad.name} deleted Successfully`)
             }
+            else {
+                toast.error( 'Sorry You cannot delete'
+                )
+            }
         })
     }
 if(isLoading){

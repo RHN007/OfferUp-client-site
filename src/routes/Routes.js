@@ -49,7 +49,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/category',
-                element: <Advertisements/> 
+                element: <PrivateRoutes><Advertisements/> </PrivateRoutes>
 
             },
             {

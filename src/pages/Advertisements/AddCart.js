@@ -73,7 +73,7 @@ const AddCart = ({ ad, refetch }) => {
                 refetch()
             }
             else {
-                toast.error(data.message)
+                toast.error(data.message, "Please Login First")
             }
             
         })

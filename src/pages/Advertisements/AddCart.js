@@ -8,7 +8,7 @@ const AddCart = ({ ad, refetch }) => {
    
     const {user} = useContext(AuthContext)
     // console.log(ad)
-    const {_id, brand, condition, description, image, price, location, name, mobileNumber, status, sellerName,sellerStatus } = ad
+    const {_id, brand, condition, description, image, price, location, name, mobileNumber, status, sellerName,sellerStatus, email } = ad
     
     const handleBookingButton = (event) => {
         const bookings = {
@@ -21,7 +21,8 @@ const AddCart = ({ ad, refetch }) => {
             email:user.email,
             condition, 
             location,
-            status
+            status,
+            userEmail:email
         }
         fetch('https://server-sooty-five.vercel.app/bookings', {
             method: 'POST',

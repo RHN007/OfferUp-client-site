@@ -4,6 +4,7 @@ import { AuthContext } from '../../contexts/AuthProvider';
 import Loading from '../../pages/Shared/Loading/Loading';
 
 
+
 const PrivateRoutes = ({children}) => {
     const {user, loading} = useContext(AuthContext)
     if(loading){

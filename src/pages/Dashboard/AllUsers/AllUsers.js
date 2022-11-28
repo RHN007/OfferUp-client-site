@@ -8,14 +8,14 @@ const AllUsers = () => {
     const { data: users = [],isLoading, refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:9000/users');
+            const res = await fetch('https://server-sooty-five.vercel.app/users');
             const data = await res.json();
             return data;
         }
     });
 
     const handleMakeAdmin = id => {
-        fetch(`http://localhost:9000/users/admin/${id}`, {
+        fetch(`https://server-sooty-five.vercel.app/users/admin/${id}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -31,7 +31,7 @@ const AllUsers = () => {
     }
     
     const handleUserStatusUpdate = (id) => {
-        fetch(`http://localhost:9000/user/${id}`, {
+        fetch(`https://server-sooty-five.vercel.app/user/${id}`, {
             method: 'PATCH',
             headers: {
                 'content-type' : 'application/json'
@@ -59,7 +59,7 @@ const AllUsers = () => {
 
 
     const handleUserDelete = (user) => {
-        fetch(`http://localhost:9000/users/${user._id}`, {
+        fetch(`https://server-sooty-five.vercel.app/users/${user._id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`

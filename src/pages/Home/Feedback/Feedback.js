@@ -13,7 +13,7 @@ const Feedback = () => {
         buttonText="Please give us feedback Here"
         handleClose={() => console.log("handleClose")}
         handleSubmit={(data) => 
-            fetch('http://localhost:9000/feedback', {
+            fetch('https://server-sooty-five.vercel.app/feedback', {
                 headers: {
                     Accept: 'application/json',
                     'Content-Type': 'application/json'

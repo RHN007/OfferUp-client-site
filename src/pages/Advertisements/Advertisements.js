@@ -1,16 +1,17 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+// import React, { useContext } from 'react';
+// import { AuthContext } from '../../contexts/AuthProvider';
 import Loading from '../Shared/Loading/Loading';
 import AddCart from './AddCart';
 
 const Advertisements = () => {
-  
-
-    const {data:advertisement, isLoading, refetch} = useQuery({
-        queryKey: ['advertisement', ],
+    // const {user} = useContext(AuthContext)
+    // const email = user.email
+    const {data:advertisement = [], isLoading, refetch} = useQuery({
+        queryKey: ['advertisement'],
         queryFn: async () => {
             try {
-                    const res = await fetch(`http://localhost:9000/advertisement`,{
+                    const res = await fetch(`https://server-sooty-five.vercel.app/advertisement`,{
                         headers: {
                             authorization: `bearer ${localStorage.getItem('accessToken')}`
                         }

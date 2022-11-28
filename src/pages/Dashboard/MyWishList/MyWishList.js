@@ -16,7 +16,7 @@ const MyWishList = () => {
     const { data: wishlist , refetch, isLoading} = useQuery({
         queryKey: ['wishlist', user?.email], 
         queryFn: async () => {
-            const res = await fetch(`http://localhost:9000/wishlist?email=${user?.email}`)
+            const res = await fetch(`https://server-sooty-five.vercel.app/wishlist?email=${user?.email}`)
             const data = await res.json()
             return data
         }
@@ -24,7 +24,7 @@ const MyWishList = () => {
 
     const handleDeleteWishlist = ad => {
         console.log(ad)
-        fetch(`http://localhost:9000/wishlist/${ad._id}`, {
+        fetch(`https://server-sooty-five.vercel.app/wishlist/${ad._id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`

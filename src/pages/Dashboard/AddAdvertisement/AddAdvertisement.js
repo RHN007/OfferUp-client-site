@@ -20,7 +20,7 @@ const AddAdvertisement = () => {
     const { data: categoryList, isLoading } = useQuery({
         queryKey: ['productCategory'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:9000/categoryList`)
+            const res = await fetch(`https://server-sooty-five.vercel.app/categoryList`)
             const data = await res.json()
             return data
         }
@@ -57,7 +57,7 @@ const AddAdvertisement = () => {
 
                     }
                     //Save Information to the database : 
-                    fetch(`http://localhost:9000/advertisement`, {
+                    fetch(`https://server-sooty-five.vercel.app/advertisement`, {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',

@@ -7,7 +7,7 @@ const ShowFeedback = () => {
     const {data: feedback= []} = useQuery({
         queryKey: ['feedback'], 
         queryFn: async() => {
-            const res = await fetch('http://localhost:9000/feedback'); 
+            const res = await fetch('https://server-sooty-five.vercel.app/feedback'); 
             const data = await res.json()
             return data
             

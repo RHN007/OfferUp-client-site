@@ -16,7 +16,7 @@ const ManageAd = () => {
         queryKey: ['advertisement'],
         queryFn: async () => {
             try {
-                    const res = await fetch(`http://localhost:9000/advertisement`,{
+                    const res = await fetch(`https://server-sooty-five.vercel.app/advertisement`,{
                         headers: {
                             authorization: `bearer ${localStorage.getItem('accessToken')}`
                         }
@@ -32,7 +32,7 @@ const ManageAd = () => {
 
     const handleDeleteAdvertisement = ad => {
         console.log(ad)
-        fetch(`http://localhost:9000/advertisement/${ad._id}`, {
+        fetch(`https://server-sooty-five.vercel.app/advertisement/${ad._id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`

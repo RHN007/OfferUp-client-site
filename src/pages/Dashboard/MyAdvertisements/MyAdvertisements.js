@@ -7,7 +7,7 @@ const MyAdvertisements = () => {
     // const { data: advertisement , refetch, isLoading} = useQuery({
     //     queryKey: ['advertisement', user?.email], 
     //     queryFn: async () => {
-    //         const res = await fetch(`http://localhost:9000/advertisement?email=${user?.email}`)
+    //         const res = await fetch(`https://server-sooty-five.vercel.app/advertisement?email=${user?.email}`)
     //         const data = await res.json()
     //         return data
     //     }

@@ -22,7 +22,7 @@ const AdvertisedItems = () => {
     const { data: advertisement , refetch, isLoading} = useQuery({
         queryKey: ['advertisement', user?.email], 
         queryFn: async () => {
-            const res = await fetch(`http://localhost:9000/advertisements?email=${user?.email}`)
+            const res = await fetch(`https://server-sooty-five.vercel.app/advertisements?email=${user?.email}`)
             const data = await res.json()
             return data
         }
@@ -30,7 +30,7 @@ const AdvertisedItems = () => {
 
     const handleDeleteAdvertisement = ad => {
         console.log(ad)
-        fetch(`http://localhost:9000/advertisement/${ad._id}`, {
+        fetch(`https://server-sooty-five.vercel.app/advertisement/${ad._id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -45,7 +45,7 @@ const AdvertisedItems = () => {
         })
     }
     const handleStatusUpdate = id => {
-        fetch(`http://localhost:9000/advertisements/${id}`, {
+        fetch(`https://server-sooty-five.vercel.app/advertisements/${id}`, {
             method: 'PATCH',
             headers: {
                 'content-type' : 'application/json'

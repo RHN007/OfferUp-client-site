@@ -21,10 +21,10 @@ const Navbar = () => {
             <>  
              {user?.photoURL ? 
             <img className='h-12'  src={user?.photoURL} alt="userImage" />
-            : <FaUser></FaUser>  }
-           <p className='ml-2'>{user?.displayName}</p>
+            : <FaUser className='mt-3 text-yellow-300'></FaUser>  }
+           <li className='ml-2 mt-3 text-yellow-300'>{user?.displayName}</li>
             <li className='font-semibold'><NavLink to='/dashboard'>Dashboard</NavLink></li>
-              <NavLink className='font-semibold'><button className='btn-ghost' onClick={handleLogOut} >SignOut</button></NavLink>
+             <li><NavLink className='font-semibold'><button className='btn-ghost text-yellow-300' onClick={handleLogOut} >SignOut</button></NavLink></li> 
 
           </> 
             : <li><NavLink className='rounded-xl' to="/login">Login</NavLink></li>}

@@ -5,8 +5,8 @@ import { AuthContext } from '../../../contexts/AuthProvider';
 
 const MyBookings = () => {
     const {user} = useContext(AuthContext)
-    const url = `http://localhost:9000/bookings?email=${user?.email}`; 
-    // const url = `http://localhost:9000/bookings`; 
+    const url = `https://server-sooty-five.vercel.app/bookings?email=${user?.email}`; 
+    // const url = `https://server-sooty-five.vercel.app/bookings`; 
 
     const {data:bookings= []} = useQuery({
         queryKey: ['bookings', user?.email], 

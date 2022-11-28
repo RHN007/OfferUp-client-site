@@ -23,7 +23,7 @@ const AddCart = ({ ad, refetch }) => {
             location,
             status
         }
-        fetch('http://localhost:9000/bookings', {
+        fetch('https://server-sooty-five.vercel.app/bookings', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -58,7 +58,7 @@ const AddCart = ({ ad, refetch }) => {
             location,
             status
         }
-        fetch('http://localhost:9000/wishlist', {
+        fetch('https://server-sooty-five.vercel.app/wishlist', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

@@ -17,6 +17,7 @@ import Login from "../pages/Login/Login";
 import PageNotFound from "../pages/Shared/PageNotFound/PageNotFound";
 import Signup from "../pages/Signup/Signup";
 import PrivateRoutes from "./PrivateRoute/PrivateRoute";
+import AdminRoute from "./AdminRoutes/AdminRoute";
 
 
 
@@ -70,7 +71,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/allusers',
-                element: <AllUsers></AllUsers>
+                element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
             },
             {
                 path: '/dashboard/addAdvertisement',
@@ -82,7 +83,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/manageAd',
-                element: <ManageAd></ManageAd>
+                element:  <AdminRoute><ManageAd></ManageAd></AdminRoute>
             },
             {
                 path: '/dashboard/wishlist',

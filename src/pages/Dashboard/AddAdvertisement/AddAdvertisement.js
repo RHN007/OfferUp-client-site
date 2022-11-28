@@ -41,6 +41,8 @@ const AddAdvertisement = () => {
                     console.log(imgData.data.url)
                     const advertisement = {
                         name: data.name,
+                        sellerName: user.displayName,
+                        sellerStatus: user.status, 
                         brand: data.brand,
                         image: imgData.data.url,
                         price: data.price,

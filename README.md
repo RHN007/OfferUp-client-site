@@ -22,7 +22,9 @@
   *React feedback ,react-hook-form,react-toastify,date-fns,axios, 
   *React Axios to load data from Server
   *React tanstack query to load data.
-  
+
+adminEmail : <mohosina@gmail.com>
+adminPassword: <Dha123ka@>
   
 
 

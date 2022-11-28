@@ -1,10 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
+import useTitle from '../../../hooks/useTitle';
 import ConfirmationModal from '../../Shared/ConfirmationModal/ConfirmationModal';
 import Loading from '../../Shared/Loading/Loading';
 
 const ManageAd = () => {
+    useTitle('Manage Ad')
     const [deleteAdd, setDeleteAdd] = useState(null)
     const closeModal = () => {
         setDeleteAdd(null)

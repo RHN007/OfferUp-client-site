@@ -23,8 +23,8 @@
   *React Axios to load data from Server
   *React tanstack query to load data.
 
-adminEmail : <mohosina@gmail.com>
-adminPassword: <Dha123ka@>
+## adminEmail : <mohosina@gmail.com>
+## adminPassword: <Dha123ka@>
   
 
 

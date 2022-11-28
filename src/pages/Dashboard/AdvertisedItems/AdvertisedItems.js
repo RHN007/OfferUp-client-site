@@ -2,10 +2,12 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useContext, useState } from 'react';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../../contexts/AuthProvider';
+import useTitle from '../../../hooks/useTitle';
 import ConfirmationModal from '../../Shared/ConfirmationModal/ConfirmationModal';
 import Loading from '../../Shared/Loading/Loading';
 
 const AdvertisedItems = () => {
+    useTitle('My Ads')
     const {user} = useContext(AuthContext)
     const [myAd, setMyAd] = useState([])
     // const [statusUpdate, setStatusUpdate] = useState(null)

@@ -49,8 +49,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/category',
-                element: <PrivateRoutes><Advertisements/> </PrivateRoutes>
-
+                element: <Advertisements/> 
             },
             {
                 path: '/blogs', 
